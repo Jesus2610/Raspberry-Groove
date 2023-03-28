@@ -30,6 +30,7 @@ temp = 0
 led_on = False
 buzzer_on = False
 
+#Function that...
 def setPins(temp):
     global led_on
     global buzzer_on
@@ -49,11 +50,12 @@ def setPins(temp):
         buzzer_on = False
         
     return 0
-
+#Route that...
 @app.route("/")
 def hello():
     return "Hello World"
 
+#Route that...
 @app.route('/api/sensores/temperature' ,methods=['GET'])
 def getTemp():
     global temp
@@ -66,6 +68,7 @@ def getTemp():
     except (IOError, TypeError) as e:
         return jsonify({"error": e})
 
+#Route that...
 @app.route('/api/sensores/temperature' ,methods=['PUT'])
 def setTemp():
     global temp
@@ -83,13 +86,15 @@ def setTemp():
     except (IOError, TypeError) as e:
         return jsonify({"error": e})
 
+#Route that...
 @app.route('/api/actuadores/led' ,methods=['GET'])
 def getLed():
     try:
         return jsonify( {"Led on": led_on})
     except (IOError, TypeError) as e:
         return jsonify({"error": e})
-    
+
+#Route that...
 @app.route('/api/actuadores/buzzer' ,methods=['GET'])
 def getBuzzer():
     try:
